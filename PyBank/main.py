@@ -1,19 +1,37 @@
 import os
 import csv
 
+months = 0.00
+total = 0.00
+
 # path to accept data from resources folder
-budget_csv = os.path.join("..", "Resources", "budget_data.csv")
+csvpath = os.path.join('Resources', 'budget_data.csv')
 
-# define parameters
-def print_add(budget_data):
-    months = str(budget_data[0])
-    pro_los = int(budget_data[1])
+# read csv file
+with open(csvpath) as csvfile:
 
-# total months
-for month in months:
-    total_months = 0.00
-    total_months += months
-print(total_months)
+    # specify delimiter
+    csvreader = csv.reader(csvfile, delimiter=',')
+
+    print(csvreader)
+
+    # read header row first
+    csv_header = next(csvreader)
+    print(f"CSV Header: {csv_header}")
+
+    # read each row after header
+    for row in csvreader:
+        
+    # total months
+        months +=1
+    print(f"Total Months: {months}")
+    
+    # net total of "Profit/Losses"
+
+
+
+
+
 
 
     
