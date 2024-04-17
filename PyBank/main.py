@@ -25,8 +25,21 @@ with open(csvpath) as csvfile:
     # total months
         months +=1
     print(f"Total Months: {months}")
+
+
+# net total
+with open(csvpath) as csvfile:
+    csv_header = next(csvfile)
     
-    # net total of "Profit/Losses"
+    for row in csv.reader(csvfile):
+        total +=int(row[1])
+    print(f"Total: ${total}")
+    
+
+
+    
+
+        
 
 
 
