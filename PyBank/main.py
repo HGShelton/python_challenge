@@ -3,7 +3,11 @@ import csv
 
 months = 0
 total = 0
+greatest_inc = 0
+greatest_dec = 0
 changes = []
+dates = []
+
 
 # path to accept data from resources folder
 csvpath = os.path.join('Resources', 'budget_data.csv')
@@ -39,11 +43,28 @@ for i in range(1, months):
     previous_profit = int(data[i-1][1])
     change = current_profit - previous_profit
     changes.append(change)
+    dates.append(data[i][0])
 
-
+# greatest increase/decrease in profits (date and amount)
+    if change > greatest_inc:
+        greatest_inc = change
+        greatest_inc_date = data[i][0]
+    elif change <greatest_dec:
+        greatest_dec = change
+        greatest_dec_date = data[i][0] 
+print(f"Greatest Increase: ${greatest_inc}")
+print(f"Date: {greatest_inc_date}")
+print(f"Greatest Decrease: ${greatest_dec}")
+print(f"Date: {greatest_dec_date}")
 
 # average change of profit/losses
-
 average = sum(changes) / len(changes)
 print(f"Average Change: ${average}") #--------------------------------
+
+# greatest increase in profits (date and amount)
+with open(csvpath) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+    csv_header = next(csvfile)  
+    data = list(csvreader)
+   
 
