@@ -18,7 +18,7 @@ with open(csvpath) as csvfile:
         
     # total months
         months +=1
-    print(f"Total Months: {months}")
+    print(f"Total Months: {months}") #----------------------------
 
 # net total
 with open(csvpath) as csvfile:
@@ -26,7 +26,7 @@ with open(csvpath) as csvfile:
     
     for row in csv.reader(csvfile):
         total +=int(row[1])
-    print(f"Total: ${total}")
+    print(f"Total: ${total}") #------------------------------
 
 # changes in profit/losses
 with open(csvpath) as csvfile:
@@ -40,5 +40,10 @@ for i in range(1, months):
     change = current_profit - previous_profit
     changes.append(change)
 
-print(f"Changes: ${changes}")
+
+
+# average change of profit/losses
+
+average = sum(changes) / len(changes)
+print(f"Average Change: ${average}") #--------------------------------
 
