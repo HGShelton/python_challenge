@@ -22,7 +22,6 @@ with open(csvpath) as csvfile:
         
     # total months
         months +=1
-    # print(f"Total Months: {months}") #----------------------------
 
 # net total
 with open(csvpath) as csvfile:
@@ -30,7 +29,6 @@ with open(csvpath) as csvfile:
     
     for row in csv.reader(csvfile):
         total +=int(row[1])
-    # print(f"Total: ${total}") #------------------------------
 
 # changes in profit/losses
 with open(csvpath) as csvfile:
@@ -52,14 +50,9 @@ for i in range(1, months):
     elif change <greatest_dec:
         greatest_dec = change
         greatest_dec_date = data[i][0] 
-# print(f"Greatest Increase ni Profits: {greatest_inc_date}, ${greatest_inc}")
-# print(f"Date: {greatest_inc_date}")
-# print(f"Greatest Decrease in Profits: {greatest_dec_date}, ${greatest_dec}")
-# print(f"Date: {greatest_dec_date}")
 
 # average change of profit/losses
 average = sum(changes) / len(changes)
-# print(f"Average Change: ${average}") #--------------------------------
 
 # greatest increase in profits (date and amount)
 with open(csvpath) as csvfile:
