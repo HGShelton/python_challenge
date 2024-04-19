@@ -37,20 +37,19 @@ with open(csvpath) as csvfile:
 
 # Percentage of votes for each candidate
 with open(csvpath) as csvfile:
-    csvreader = csv.DictReader(csvfile, delimiter=",") 
+    csvreader = csv.reader(csvfile, delimiter=",") 
     csv_header = next(csvreader)
 
-    for can in can_list: 
-    # Set initial vote count for each candidate to 0
-        can_votes[can] = 0
+    for row in csvreader:
+        can = row[2]
+        if can in can_votes:
+            can_votes[can] += 1
+        else:
+            can_votes[can] = 1
 
-    for vote in can_votes: 
-        can_votes[vote] += 1
+for can, votes in can_votes.items():
+    print(f"{can}: {votes} votes")
 
-    for can in can_list:
-        vote = can_votes[can]
-        percent_votes = (vote / votes) * 100
-        print(f"{can} : {percent_votes:.3f}% ({vote})")
               
 
 
