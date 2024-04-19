@@ -5,6 +5,8 @@ votes = 0
 
 can_list = []
 can_votes = {}
+winner = ""
+winner_votes = 0
 
 # path to accept data from resources folder
 csvpath = os.path.join('Resources', 'election_data.csv')
@@ -33,9 +35,9 @@ with open(csvpath) as csvfile:
 # # print virtical list
 #     print(f"Candidates List:")
 # for can in can_list:
-#     print(can)
+#     print(can) --------------------------------------------------------------
 
-# Percentage of votes for each candidate
+# calculate count and percentage of votes each candidate recieved 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",") 
     csv_header = next(csvreader)
@@ -47,8 +49,22 @@ with open(csvpath) as csvfile:
         else:
             can_votes[can] = 1
 
-for can, votes in can_votes.items():
-    print(f"{can}: {votes} votes")
+    for can in can_list:
+        vote = can_votes[can]
+        perc_votes = (vote / votes) * 100
+        print(f"{can} : {perc_votes:.3f}% ({vote})")
+
+# for can, votes in can_votes.items(): #-------------------------------------------
+#     print(f"{can}: {votes} votes")
+
+# winner
+        if vote > winner_votes:
+            winner = can
+            winner_votes = vote
+    print(f"{winner}")
+
+
+
 
               
 
