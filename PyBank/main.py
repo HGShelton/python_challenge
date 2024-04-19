@@ -14,7 +14,7 @@ csvpath = os.path.join('Resources', 'budget_data.csv')
 
 # read csv file
 with open(csvpath) as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',') # specify delimiter
+    csvreader = csv.reader(csvfile, delimiter=',') 
     csv_header = next(csvreader) # skip header row
     
     # read each row after header
@@ -29,7 +29,8 @@ with open(csvpath) as csvfile:
     
     for row in csv.reader(csvfile):
         total +=int(row[1])
-
+        
+# Used AI Xpert Learning Assistant to help debug broken code for calculating change in profit/losses
 # changes in profit/losses
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -43,6 +44,7 @@ for i in range(1, months):
     changes.append(change)
     dates.append(data[i][0])
 
+# Used AI Xpert Learning Assistant to help pair date with greatest inc/dec   
 # greatest increase/decrease in profits (date and amount)
     if change > greatest_inc:
         greatest_inc = change
