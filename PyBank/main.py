@@ -62,7 +62,7 @@ with open(csvpath) as csvfile:
     csv_header = next(csvfile)  
     data = list(csvreader)
    
-
+# print financial analysis
 print("Finanancial Analysis")
 print("--------------------------------")
 print(f"Total Months: {months}") 
@@ -70,3 +70,17 @@ print(f"Total: ${total}")
 print(f"Average Change: ${average:.2f}")
 print(f"Greatest Increase in Profits: {greatest_inc_date}, ${greatest_inc}")
 print(f"Greatest Decrease in Profits: {greatest_dec_date}, ${greatest_dec}")
+
+# output financial analysis to txt document in analysis folder
+output_file = os.path.join('Analysis', 'Financial Analysis.txt')
+with open(output_file, 'w')as txtfile:
+    results_file = csv.writer(txtfile)
+    results_file.writerow(["Finanancial Analysis"])
+    results_file.writerow(["--------------------------------"])
+    results_file.writerow([f"Total Months: {months}"])
+    results_file.writerow([f"Total: ${total}"])
+    results_file.writerow([f"Average Change: ${average:.2f}"])
+    results_file.writerow([f'Greatest Increase in Profits: {greatest_inc_date}, ${greatest_inc}'])
+    results_file.writerow([f'Greatest Decrease in Profits: {greatest_dec_date}, ${greatest_dec}'])
+
+
