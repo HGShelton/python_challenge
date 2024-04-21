@@ -67,9 +67,9 @@ with open(csvpath) as csvfile:
     print(f'Winner: {winner}')
 
 # output text file results to analysis folder
-output_file = os.path.join('Resources', 'Analysis')
+output_file = os.path.join('Analysis', 'Election_Results.txt')
 with open(output_file, 'w') as txtfile:
-    results_file = csv.writer(txtfile, delimeter=',')
+    results_file = csv.writer(txtfile)
     results_file.writerow(["Election Results"])
     results_file.writerow(["--------------------------------"])
     results_file.writerow(['Total Votes: {votes}'])
